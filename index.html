@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#fff;
+    width:350px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#welcomePage{
+    display:none;
+    text-align:center;
+    color:white;
+}
+
+#welcomePage h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+#welcomePage p{
+    font-size:22px;
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="loginPage">
+    <h2>Login Form</h2>
+
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button onclick="openWelcome()">
+        Submit
+    </button>
+</div>
+
+<div id="welcomePage">
+    <h1>🎉 Welcome To Our World 🎉</h1>
+    <p>You have successfully entered the test page.</p>
+</div>
+
+<script>
+function openWelcome(){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("welcomePage").style.display="block";
+}
+</script>
+
+</body>
+</html>
