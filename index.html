@@ -3,186 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register & Login Demo</title>
+<title>Register Page</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
     min-height:100vh;
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
     display:flex;
     justify-content:center;
     align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    overflow:hidden;
 }
 
 .container{
-    width:400px;
+    width:420px;
     background:#fff;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    animation:fadeIn 0.8s ease;
 }
 
-.title{
+.container h1{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    color:#333;
 }
 
-.tabs{
-    display:flex;
-    margin-bottom:20px;
+.input-group{
+    margin-bottom:15px;
 }
 
-.tabs button{
-    flex:1;
-    padding:12px;
-    border:none;
-    cursor:pointer;
-    background:#eaeaea;
-    font-size:16px;
-}
-
-.tabs button.active{
-    background:#007bff;
-    color:white;
-}
-
-.form{
-    display:none;
-}
-
-.form.active{
-    display:block;
-}
-
-input{
+.input-group input{
     width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
 }
 
-.submit-btn{
+.input-group input:focus{
+    border-color:#667eea;
+}
+
+.register-btn{
     width:100%;
-    padding:12px;
+    padding:14px;
     border:none;
-    background:#007bff;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:10px;
+    border-radius:10px;
+    background:#667eea;
+    color:#fff;
     font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.submit-btn:hover{
-    background:#0056b3;
+.register-btn:hover{
+    background:#5563d6;
+}
+
+.note{
+    text-align:center;
+    margin-top:15px;
+    color:#666;
+    font-size:14px;
 }
 
 #welcomePage{
     display:none;
     text-align:center;
     color:white;
+    animation:zoomIn 1s ease;
 }
 
 #welcomePage h1{
-    font-size:50px;
-    margin-bottom:20px;
+    font-size:60px;
+    margin-bottom:15px;
 }
 
 #welcomePage p{
-    font-size:22px;
+    font-size:24px;
+    margin-bottom:25px;
 }
 
 .home-btn{
-    margin-top:20px;
-    padding:12px 25px;
+    padding:14px 30px;
     border:none;
-    border-radius:8px;
-    cursor:pointer;
+    border-radius:10px;
     background:white;
-    color:#007bff;
+    color:#667eea;
+    font-size:16px;
+    cursor:pointer;
     font-weight:bold;
+}
+
+.home-btn:hover{
+    transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(0.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 </style>
 </head>
 <body>
 
-<div class="container" id="authPage">
+<!-- REGISTER PAGE -->
 
-    <h2 class="title">Welcome</h2>
+<div class="container" id="registerPage">
 
-    <div class="tabs">
-        <button id="loginTab" class="active" onclick="showLogin()">Login</button>
-        <button id="registerTab" onclick="showRegister()">Register</button>
-    </div>
+    <h1>Create Account</h1>
 
-    <!-- Login Form -->
-    <div id="loginForm" class="form active">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-
-        <button class="submit-btn" onclick="openWelcome()">
-            Login
-        </button>
-    </div>
-
-    <!-- Register Form -->
-    <div id="registerForm" class="form">
+    <div class="input-group">
         <input type="text" placeholder="Full Name">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <input type="password" placeholder="Confirm Password">
+    </div>
 
-        <button class="submit-btn" onclick="openWelcome()">
-            Register
-        </button>
+    <div class="input-group">
+        <input type="email" placeholder="Email Address">
+    </div>
+
+    <div class="input-group">
+        <input type="text" placeholder="Username">
+    </div>
+
+    <div class="input-group">
+        <input type="password" placeholder="Password">
+    </div>
+
+    <div class="input-group">
+        <input type="password" placeholder="Confirm Password">
+    </div>
+
+    <button class="register-btn" onclick="registerUser()">
+        Register Now
+    </button>
+
+    <div class="note">
+        Welcome to our registration portal
     </div>
 
 </div>
 
+<!-- WELCOME PAGE -->
+
 <div id="welcomePage">
+
     <h1>🎉 Welcome To Our World 🎉</h1>
-    <p>Successfully Entered</p>
+
+    <p>Your Registration Has Been Completed Successfully</p>
 
     <button class="home-btn" onclick="goBack()">
-        Back
+        Back To Register
     </button>
+
 </div>
 
 <script>
 
-function showLogin(){
-    document.getElementById("loginForm").classList.add("active");
-    document.getElementById("registerForm").classList.remove("active");
+function registerUser(){
 
-    document.getElementById("loginTab").classList.add("active");
-    document.getElementById("registerTab").classList.remove("active");
-}
+    document.getElementById("registerPage").style.display = "none";
+    document.getElementById("welcomePage").style.display = "block";
 
-function showRegister(){
-    document.getElementById("registerForm").classList.add("active");
-    document.getElementById("loginForm").classList.remove("active");
-
-    document.getElementById("registerTab").classList.add("active");
-    document.getElementById("loginTab").classList.remove("active");
-}
-
-function openWelcome(){
-    document.getElementById("authPage").style.display="none";
-    document.getElementById("welcomePage").style.display="block";
 }
 
 function goBack(){
-    document.getElementById("welcomePage").style.display="none";
-    document.getElementById("authPage").style.display="block";
+
+    document.getElementById("welcomePage").style.display = "none";
+    document.getElementById("registerPage").style.display = "block";
+
 }
 
 </script>
