@@ -10,196 +10,102 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    min-height:100vh;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#667eea,#764ba2);
-    overflow:hidden;
 }
 
 .container{
-    width:420px;
+    width:400px;
     background:#fff;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.2);
-    animation:fadeIn 0.8s ease;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-.container h1{
+h2{
     text-align:center;
-    margin-bottom:25px;
-    color:#333;
+    margin-bottom:20px;
 }
 
-.input-group{
-    margin-bottom:15px;
-}
-
-.input-group input{
+input{
     width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    outline:none;
-    font-size:15px;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
 }
 
-.input-group input:focus{
-    border-color:#667eea;
-}
-
-.register-btn{
+button{
     width:100%;
-    padding:14px;
+    padding:12px;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
     background:#667eea;
-    color:#fff;
+    color:white;
     font-size:16px;
     cursor:pointer;
-    transition:0.3s;
 }
 
-.register-btn:hover{
+button:hover{
     background:#5563d6;
 }
 
-.note{
-    text-align:center;
-    margin-top:15px;
-    color:#666;
-    font-size:14px;
-}
-
-#welcomePage{
+#successMessage{
     display:none;
     text-align:center;
     color:white;
-    animation:zoomIn 1s ease;
 }
 
-#welcomePage h1{
-    font-size:60px;
+#successMessage h1{
+    font-size:50px;
     margin-bottom:15px;
 }
 
-#welcomePage p{
-    font-size:24px;
-    margin-bottom:25px;
-}
-
-.home-btn{
-    padding:14px 30px;
-    border:none;
-    border-radius:10px;
-    background:white;
-    color:#667eea;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.home-btn:hover{
-    transform:scale(1.05);
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes zoomIn{
-    from{
-        opacity:0;
-        transform:scale(0.5);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+#successMessage p{
+    font-size:22px;
 }
 </style>
 </head>
 <body>
 
-<!-- REGISTER PAGE -->
+<div class="container" id="registerForm">
 
-<div class="container" id="registerPage">
+    <h2>Create Account</h2>
 
-    <h1>Create Account</h1>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email Address">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Confirm Password">
 
-    <div class="input-group">
-        <input type="text" placeholder="Full Name">
-    </div>
-
-    <div class="input-group">
-        <input type="email" placeholder="Email Address">
-    </div>
-
-    <div class="input-group">
-        <input type="text" placeholder="Username">
-    </div>
-
-    <div class="input-group">
-        <input type="password" placeholder="Password">
-    </div>
-
-    <div class="input-group">
-        <input type="password" placeholder="Confirm Password">
-    </div>
-
-    <button class="register-btn" onclick="registerUser()">
-        Register Now
+    <button onclick="submitForm()">
+        Register
     </button>
-
-    <div class="note">
-        Welcome to our registration portal
-    </div>
 
 </div>
 
-<!-- WELCOME PAGE -->
+<div id="successMessage">
 
-<div id="welcomePage">
+    <h1>🎉 Registration Successful!</h1>
 
-    <h1>🎉 Welcome To Our World 🎉</h1>
-
-    <p>Your Registration Has Been Completed Successfully</p>
-
-    <button class="home-btn" onclick="goBack()">
-        Back To Register
-    </button>
+    <p>Welcome To Our World 🚀</p>
 
 </div>
 
 <script>
+function submitForm(){
 
-function registerUser(){
+    document.getElementById("registerForm").style.display = "none";
 
-    document.getElementById("registerPage").style.display = "none";
-    document.getElementById("welcomePage").style.display = "block";
-
+    document.getElementById("successMessage").style.display = "block";
 }
-
-function goBack(){
-
-    document.getElementById("welcomePage").style.display = "none";
-    document.getElementById("registerPage").style.display = "block";
-
-}
-
 </script>
 
 </body>
